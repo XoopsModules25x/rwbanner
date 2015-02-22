@@ -1,0 +1,151 @@
+//  ------------------------------------------------------------------------ //
+//                                  RW-Banner                                //
+//                    Copyright (c) 2006 BrInfo                              //
+//                     <http://www.brinfo.com.br>                            //
+//  ------------------------------------------------------------------------ //
+//  This program is free software; you can redistribute it and/or modify     //
+//  it under the terms of the GNU General Public License as published by     //
+//  the Free Software Foundation; either version 2 of the License, or        //
+//  (at your option) any later version.                                      //
+//                                                                           //
+//  You may not change or alter any portion of this comment or credits       //
+//  of supporting developers from this source code or any supporting         //
+//  source code which is considered copyrighted (c) material of the          //
+//  original comment or credit authors.                                      //
+//                                                                           //
+//  This program is distributed in the hope that it will be useful,          //
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
+//  GNU General Public License for more details.                             //
+//                                                                           //
+//  You should have received a copy of the GNU General Public License        //
+//  along with this program; if not, write to the Free Software              //
+//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
+// ------------------------------------------------------------------------- //
+// Author: Rodrigo Pereira Lima (BrInfo - Soluções Web)                      //
+// Site: http://www.brinfo.com.br                                            //
+// Project: RW-Banner                                                        //
+// Descrição: Sistema de gerenciamento de mídias publicitárias               //
+// ------------------------------------------------------------------------- //
+
+[b] DESCRIPTION :[/b]
+===============================
+Le module Xoops permettant de contrôler et afficher de manière aléatoire des bannières, il peut être utilisé seul ou avec celui inclu par défaut dans Xoops.
+
+Le but de ce module est de permettre à l'administrateur d'avoir une organisation, robuste et efficace pour contrôler des medias et des espaces publicitaires sur son site.
+
+[b] CARACTÉRISTIQUES :[/b]
+===============================
+- Registre des bannières.
+- Registre des catégories de bannières.
+- Registre des modèles des bannières.
+- Registre des Tags des bannières.
+- Registre des clients des bannières.
+- 5 modèles d'affichages des bannières. Y compris des blocs en Ajax.
+- Tous les blocs sont clonable.
+- Bloc pour les statistiques des clients et de vos bannières.
+- Activation/désactivation des bannières en 1 (un) clic.
+- Les bannières inactives peuvent rester dans la base de données.
+- Création de Tags Smarty pour l'utilisation dans les thèmes, modules, blocs et contenu.
+- Le client peut vérifier la situation de ses bannières
+- Le client peut faire des modifications dans ses bannières (si l'administrateur l'autorise)
+- Envoi d'un E-mail aux clients avec les statistiques de ses bannières.
+- Quelques fonctionnalités aléatoires d'utilisation.
+- Vous pourrez créer des ensembles de bannières intercalées par groupes.
+- Accepte l'affichage de plus d'une bannière dans les blocs.
+
+
+DISPOSITIFS :
+- Enregistrement des bannières par catégories et/ou par clients. Les catégories sont utilisées en différençant la taille des bannières de sorte que vous puissiez créer des plusieurs modèles d'affichage des bannières. Les clients sont des utilisateurs enregistrés sur le site et quand vous ajoutez une bannière.
+- 5 modèles de blocs clonables pour afficher les bannières dans plusieurs configurations, permettant à l'administrateur de choisir le nombre de bannières aléatoires qu'il veut montrer, la catégorie à afficher, l'option pour créer une table pour l'affichage des bannières permet de choisir seulement dans combien de colonnes elles devraient être affichées.
+- Bloc de statistiques pour le client. Dans ce bloc est montré un tableau avec les statistiques principales de toutes bannières liées au client.
+- Option d'activation et de désactivation des bannières par un clic. Seules les bannières actives seront montrées mais les inactives continuent d'être enregistrées dans la base de données, permettant de les réactiver à tout moment. 
+- Au delà des blocs d'affichage des bannières il est également possible d'employer une bannière aléatoire dans le thème de votre sitet ou dans n'importe quelle autre page que vous souhaitez, en ajoutant seulement <{$rw_banner}> le tag (ce dispositif exige une petite modification dans le noyau de xoops qui est expliquée dans les instructions d'installation ci-dessous).
+- Page de statistiques pour le client. Dans la page principale du module, un tableau affiche toutes statistiques des bannières pour un client donné. De plus, sur cette page le client a l'option d'envoyer les statistiques de bannière sur son E-mail enregistré, et si l'administrateur l'autorise il pourra changer les informations concernant la bannière.- Affiche des bannières non aléatoires dans le texte d'autres modules. Maintenant vous pouvez montrer vos bannières dans n'importe quel module qui accepte les bbcodes. Vous pouvez éditer des bannières dans les news, articles, pages statiques, ainsi que dans le forum. (ce dispositif exige une petite modification dans le noyau de xoops qui est expliqué dans les instructions d'installation ci-dessous).
+
+INSTALLATION :
+L'installation de ce module est très facile en suivant la procédure d'installation de tout autre module.
+Pour activer la fonction pour l'affichage aléatoire de bannière dans le thème de votre site, vous devez exécuter une petite modification dans le noyau de xoops, plus particulièrement dans le fichier header.php, situé à la racine de votre emplacement.
+
+Pour réaliser cette modification, ouvrez le fichier XOOPS_ROOT_PATH/header.php et à la fin du fichier ajoutez avant} ?>, le code ci-dessous :
+
+
+To include this back, open the file XOOPS_ROOT_PATH/header.php and in the end of the file add before the } ?>, the code below:
+
+###########################################################################################
+#### Hack by rw-banner
+#### Create smarty vars to show the banner in the theme of your site and in the templates
+###########################################################################################
+$mod = XoopsModule::getByDirname("rw_banner");
+if ($mod){
+  include_once (dirname(dirname(__FILE__)) .'/include/maketags.php');
+}
+###########################################################################################
+#### End of the Hack by rw-banner
+###########################################################################################
+
+Etape 1 réalisée ! Vous avez activé les TAGS SMARTY qui fonctionneront pour le module. Par l'intermédiaire de l'administration du module vous pouvez créer, éditer, changer le statut et supprimer les tags. Chaque fois que vous voulez montrer votre bannière aléatoire, dans le thème ou dans tout templates de module vous avez juste besoin de créer un tag pour le modèle de publicité désiré et de l'insérer dans le fichier theme.html ou dans le template.
+
+Pour activer cette nouvelle fonctionnalités d'affichage, vous avez besoin de modifier le noyau de xoops et particulièrement le fichier XOOPS_ROOT_PATH/class/module.textsanitizer.php file.
+Pour ajouter la modification, vous devez ouvrir le fichier XOOPS_ROOT_PATH/class/module.textsanitizer.php  et regarder l'appel à la fonction xoopsCodeDecode, et à la fin de celle-ci ajouter le code suivant :
+
+#######################################################################################
+#### Hack by rw-banner
+#### Allow the exhibition of random banners an any module with bbcodes
+#######################################################################################
+$mod = XoopsModule::getByDirname("rw_banner");
+if ($mod){
+  include(dirname(dirname(__FILE__)) .'/include/bbcode.php');
+}
+#######################################################################################
+#### end of the Hack by rw-banner
+#######################################################################################
+
+
+
+Pour faire ceci aisément, vous trouverez dans le dossier docs du module, les fichiers modifiés que vous avez besoin pour le noyau de xoop (ne pas oublier de sauvegarder les fichiers modifiés ou de les renommer en mettant un .bak à la fin de ceux-ci.
+
+Après application du hack, vous aurez besoin de créer les tags dont vous avez besoin dans l'administration du module.
+
+Regardez l'exemple ci-dessous :
+
+Exemples :
+imaginons que vous avez déjà créé un tag "publicidade" et l'avez paramétré dans l'administration. Pour afficher les bannières de ce tags sur votre site, vous devriez ajouter ceci :
+
+<{$publicidade}>
+
+Mais dans le corps de vos articles ou de n'importe quel module de gestion de contenu qui accepte les bbcodes vous devez ajouter le tag comme suit :
+
+[RW align=center]publicidade[/RW]
+
+
+Le paramètre d'alignement accepte les valeurs "left" pour l'alignement gauche, "right" pour la droite et "center" pour le central.
+
+
+///////// Fin de la traduction française ////////
+
+
+
+UPDATES:
+The modules had structural changes in relation to the database in relation to the previous verions. If you use any versions prior to 1.3RC we recommend you to unistall the module before installing the new version. 
+In case you have a version newer than the 1.3RC, delete the rw_banner folder and replace it by the folder from the new version. Login as administrator to your site. If you use the hack in header.php file, comment it first. Access via browser the URL "dirname(dirname(__FILE__)) .'/admin/upgrade.php" and the script will update the tables automatically without loosing all the setup you have already defined and all the registered banners. Follow the steps described in the script and your module will be updated.
+
+KNOWN BUGS:
+-Banners in HTML code don't have their click counted. This bug is originally from the original xoops banner module. This function is used in our module but with some changes. 
+
+THANKS:
+I thank all my friends from the XoopsTotal community that helped me with ideas and suggestions for the development of this module, in special to my great friend Wilson and Giba (board of XT) for their great help with their ideias and help in testing the module. 
+
+For further information or problem solving for this module access the following site: http://rwbanner.brinfo.com.br
+
+[b]ITS DISPOSAL:[/b]
+===============================
+We will be inside of the possible always creating examples of as to use rw_banner and thus you will be able to get the biggest possible advantage to use this module.
+
+If you will be using this module, does not leave to visit our site of development to suggest new features.
+
+It also uses to advantage to fill our book of satisfied users and to order its message so that other users whom to desire to use this module can know that it functions and also he is very useful.
+
+Rw_banner Team Leader.
+
+[b]TheRpLima[/b]
