@@ -210,7 +210,6 @@ define('_AM_RWBANNER_GROUPS','Groups');
 define('_AM_RWBANNER_GROUPSINFO','Module setup and block permissions for each group');
 define('_AM_RWBANNER_POSITION','Position');
 
-
 define('_AM_RWBANNER_BTN_OP1','Add');
 define('_AM_RWBANNER_BTN_OP2','Edit');
 define('_AM_RWBANNER_BTN_OP3','Unlimited');

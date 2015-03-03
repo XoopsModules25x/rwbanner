@@ -32,8 +32,8 @@
 function rwbanner_adminMenu ($currentoption = 0, $breadcrumb = '')
 {
 
-	/* Nice buttons styles */
-	echo "
+    /* Nice buttons styles */
+    echo "
     	<style type='text/css'>
     	#buttontop { float:left; width:100%; background: #e7e7e7; font-size:93%; line-height:normal; border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; margin: 0; }
     	#buttonbar { float:left; width:100%; background: #e7e7e7 url('../images/bg.gif') repeat-x left bottom; font-size:93%; line-height:normal; border-left: 1px solid black; border-right: 1px solid black; margin-bottom: 12px; }
@@ -52,34 +52,34 @@ function rwbanner_adminMenu ($currentoption = 0, $breadcrumb = '')
 		</style>
     ";
 
-	// global $xoopsDB, $xoopsModule, $xoopsConfig, $xoopsModuleConfig;
-	global $xoopsModule, $xoopsConfig;
+    // global $xoopsDB, $xoopsModule, $xoopsConfig, $xoopsModuleConfig;
+    global $xoopsModule, $xoopsConfig;
 
-	$myts =& MyTextSanitizer::getInstance();
+    $myts =& MyTextSanitizer::getInstance();
 
-	$tblColors = Array();
-	$tblColors[0] = $tblColors[1] = $tblColors[2] = $tblColors[3] = $tblColors[4] = $tblColors[5] = $tblColors[6] = $tblColors[7] = $tblColors[8] = '';
-	$tblColors[$currentoption] = 'current';
+    $tblColors = Array();
+    $tblColors[0] = $tblColors[1] = $tblColors[2] = $tblColors[3] = $tblColors[4] = $tblColors[5] = $tblColors[6] = $tblColors[7] = $tblColors[8] = '';
+    $tblColors[$currentoption] = 'current';
 
-	echo "<div id='buttontop'>";
-	echo "<table style=\"width: 100%; padding: 0; \" cellspacing=\"0\"><tr>";
-	//echo "<td style=\"width: 45%; font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;\"><a class=\"nobutton\" href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=" . $xoopsModule->getVar('mid') . "\">" . _AM_SPARTNER_OPTS . "</a> | <a href=\"../index.php\">" . _AM_SPARTNER_GOMOD . "</a> | <a href=\"import.php\">" . _AM_SPARTNER_IMPORT . "</a> | <a href='" . smartpartner_getHelpPath() ."' target=\"_blank\">" . _AM_SPARTNER_HELP . "</a> | <a href=\"about.php\">" . _AM_SPARTNER_ABOUT . "</a></td>";
-	echo "<td style=\"width: 45%; font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;\"><a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=" . $xoopsModule->getVar('mid') . "\">" . _AM_RWBANNER_PREF . "</a> | <a href=\"http://rwbanner.brinfo.com.br\" target=\"_blank\">"._AM_RWBANNER_DEMO."</a> | <a href=\"import.php\">" . _AM_RWBANNER_IMPORT . "</a> | <a href=\"about.php\">" . _AM_RWBANNER_ABOUT . "</a></td>";
-	echo "<td style=\"width: 55%; font-size: 10px; text-align: right; color: #2F5376; padding: 0 6px; line-height: 18px;\"><b>" . $myts->displayTarea($xoopsModule->name()) . " " . _AM_RWBANNER_MODADMIN . "</b> " . $breadcrumb . "</td>";
-	echo "</tr></table>";
-	echo "</div>";
+    echo "<div id='buttontop'>";
+    echo "<table style=\"width: 100%; padding: 0; \" cellspacing=\"0\"><tr>";
+    //echo "<td style=\"width: 45%; font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;\"><a class=\"nobutton\" href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=" . $xoopsModule->getVar('mid') . "\">" . _AM_SPARTNER_OPTS . "</a> | <a href=\"../index.php\">" . _AM_SPARTNER_GOMOD . "</a> | <a href=\"import.php\">" . _AM_SPARTNER_IMPORT . "</a> | <a href='" . smartpartner_getHelpPath() ."' target=\"_blank\">" . _AM_SPARTNER_HELP . "</a> | <a href=\"about.php\">" . _AM_SPARTNER_ABOUT . "</a></td>";
+    echo "<td style=\"width: 45%; font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;\"><a href=\"../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=" . $xoopsModule->getVar('mid') . "\">" . _AM_RWBANNER_PREF . "</a> | <a href=\"http://rwbanner.brinfo.com.br\" target=\"_blank\">"._AM_RWBANNER_DEMO."</a> | <a href=\"import.php\">" . _AM_RWBANNER_IMPORT . "</a> | <a href=\"about.php\">" . _AM_RWBANNER_ABOUT . "</a></td>";
+    echo "<td style=\"width: 55%; font-size: 10px; text-align: right; color: #2F5376; padding: 0 6px; line-height: 18px;\"><b>" . $myts->displayTarea($xoopsModule->name()) . " " . _AM_RWBANNER_MODADMIN . "</b> " . $breadcrumb . "</td>";
+    echo "</tr></table>";
+    echo "</div>";
 
-	echo "<div id='buttonbar'>";
-	echo "<ul>";
-	echo "<li id='" . $tblColors[0] . "'><a href=\"index.php\"><span>" . _AM_RWBANNER_INDEX . "</span></a></li>";
-	echo "<li id='" . $tblColors[1] . "'><a href=\"myblocksadmin.php\"\"><span>" . _MI_RWBANNER_MENU_TITLE2 . "</span></a></li>";
+    echo "<div id='buttonbar'>";
+    echo "<ul>";
+    echo "<li id='" . $tblColors[0] . "'><a href=\"index.php\"><span>" . _AM_RWBANNER_INDEX . "</span></a></li>";
+    echo "<li id='" . $tblColors[1] . "'><a href=\"myblocksadmin.php\"\"><span>" . _MI_RWBANNER_MENU_TITLE2 . "</span></a></li>";
 //	echo "<li id='" . $tblColors[2] . "'><a href=\"javascript:;\" onClick=\"javascript:window.open('inserecateg.php','cadastrar','width=450,height=250,toolbar=no');\"><span>" . _AM_RWBANNER_VALUE_BTN5 . "</span></a></li>";
-	echo "<li id='" . $tblColors[2] . "'><a href=\"insercateg.php\"><span>" . _AM_RWBANNER_VALUE_BTN5 . "</span></a></li>";
+    echo "<li id='" . $tblColors[2] . "'><a href=\"insercateg.php\"><span>" . _AM_RWBANNER_VALUE_BTN5 . "</span></a></li>";
 //	echo "<li id='" . $tblColors[3] . "'><a href=\"javascript:;\" onClick=\"javascript:window.open('insere.php','cadastrar','width=450,height=310,toolbar=no');\"><span>" . _AM_RWBANNER_VALUE_BTN1 . "</span></a></li>";
-	echo "<li id='" . $tblColors[3] . "'><a href=\"inser.php\"><span>" . _AM_RWBANNER_VALUE_BTN1 . "</span></a></li>";
-	echo "<li id='" . $tblColors[4] . "'><a href=\"javascript:;\" onClick=\"window.open('".XOOPS_URL."/modules/system/admin.php?fct=users','cadastrar');\"><span>" . _AM_RWBANNER_VALUE_BTN8 . "</span></a></li>";
-	echo "<li id='" . $tblColors[5] . "'><a href=\"insertag.php\"><span>" . _AM_RWBANNER_VALUE_BTN12 . "</span></a></li>";
-	echo "</ul></div>";
+    echo "<li id='" . $tblColors[3] . "'><a href=\"inser.php\"><span>" . _AM_RWBANNER_VALUE_BTN1 . "</span></a></li>";
+    echo "<li id='" . $tblColors[4] . "'><a href=\"javascript:;\" onClick=\"window.open('".XOOPS_URL."/modules/system/admin.php?fct=users','cadastrar');\"><span>" . _AM_RWBANNER_VALUE_BTN8 . "</span></a></li>";
+    echo "<li id='" . $tblColors[5] . "'><a href=\"insertag.php\"><span>" . _AM_RWBANNER_VALUE_BTN12 . "</span></a></li>";
+    echo "</ul></div>";
 }
 
 function rwbanner_collapsableBar($tablename = '', $iconname = '')
@@ -125,7 +125,7 @@ function rwbanner_collapsableBar($tablename = '', $iconname = '')
 	//-->
 	</script>
 	<?php
-	echo "<h3 style=\"color: #2F5376; font-weight: bold; font-size: 14px; margin: 6px 0 0 0; \"><a href='javascript:;' onclick=\"toggle('" . $tablename . "'); toggleIcon('" . $iconname . "')\";>";
+    echo "<h3 style=\"color: #2F5376; font-weight: bold; font-size: 14px; margin: 6px 0 0 0; \"><a href='javascript:;' onclick=\"toggle('" . $tablename . "'); toggleIcon('" . $iconname . "')\";>";
 }
 
 //Soma X dias em uma data
@@ -157,6 +157,7 @@ function somaData ($data,$qDias) {
       if (strlen ($dia)<2) $dia="0".$dia;
       if (strlen ($mes)<2) $mes="0".$mes;
    }
+
    return ($ano."-".$mes."-".$dia);
 }
 
@@ -268,16 +269,17 @@ function &rwbanner_getModuleInfo()
     static $rwModule;
     $dirname         = basename(dirname(dirname(__FILE__)));
     if (!isset($rwModule)) {
-	    global $xoopsModule;
-	    if (isset($xoopsModule) && is_object($xoopsModule) && $xoopsModule->getVar('dirname') ==  $dirname) {
-	        $rwModule =& $xoopsModule;
-	    }
-	    else {
-	        $hModule = &xoops_gethandler('module');
-	        $rwModule = $hModule->getByDirname($dirname);
-	    }
-	}
-	return $rwModule;
+        global $xoopsModule;
+        if (isset($xoopsModule) && is_object($xoopsModule) && $xoopsModule->getVar('dirname') ==  $dirname) {
+            $rwModule =& $xoopsModule;
+        }
+        else {
+            $hModule = &xoops_gethandler('module');
+            $rwModule = $hModule->getByDirname($dirname);
+        }
+    }
+
+    return $rwModule;
 }
 
 function &rwbanner_getModuleConfig()
@@ -285,17 +287,18 @@ function &rwbanner_getModuleConfig()
     static $rwConfig;
     if (!$rwConfig) {
         global $xoopsModule;
-	    if (isset($xoopsModule) && is_object($xoopsModule) && $xoopsModule->getVar('dirname') ==  basename(dirname(dirname(__FILE__)))) {
-	        global $xoopsModuleConfig;
-	        $rwConfig =& $xoopsModuleConfig;
-	    }
-	    else {
-	        $rwModule =& rwbanner_getModuleInfo();
-	        $hModConfig = &xoops_gethandler('config');
-	        $rwConfig = $hModConfig->getConfigsByCat(0, $rwModule->getVar('mid'));
-	    }
+        if (isset($xoopsModule) && is_object($xoopsModule) && $xoopsModule->getVar('dirname') ==  basename(dirname(dirname(__FILE__)))) {
+            global $xoopsModuleConfig;
+            $rwConfig =& $xoopsModuleConfig;
+        }
+        else {
+            $rwModule =& rwbanner_getModuleInfo();
+            $hModConfig = &xoops_gethandler('config');
+            $rwConfig = $hModConfig->getConfigsByCat(0, $rwModule->getVar('mid'));
+        }
     }
-	return $rwConfig;
+
+    return $rwConfig;
 }
 
 /**
@@ -308,6 +311,7 @@ function &rwbanner_getModuleConfig()
 function rwTableExists($tablename){
   global $xoopsDB;
   $result=$xoopsDB->queryF("SHOW TABLES LIKE '$tablename'");
+
   return($xoopsDB->getRowsNum($result) > 0);
 }
 /**
@@ -320,6 +324,7 @@ function rwTableExists($tablename){
 function rwFieldExists($fieldname,$table){
   global $xoopsDB;
   $result=$xoopsDB->queryF("SHOW COLUMNS FROM	$table LIKE '$fieldname'");
+
   return($xoopsDB->getRowsNum($result) > 0);
 }
 /**
@@ -332,6 +337,7 @@ function rwFieldExists($fieldname,$table){
 function rwAddField($field, $table){
   global $xoopsDB;
   $result=$xoopsDB->queryF("ALTER TABLE " . $table . " ADD $field;");
+
   return $result;
 }
 /**
@@ -343,6 +349,7 @@ function rwAddField($field, $table){
 function rwRemoveField($field, $table){
   global $xoopsDB;
   $result=$xoopsDB->queryF("ALTER TABLE " . $table . " DROP $field;");
+
   return $result;
 }
 ?>

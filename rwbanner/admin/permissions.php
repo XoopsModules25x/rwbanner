@@ -22,7 +22,6 @@
 include_once dirname(__FILE__) . '/admin_header.php';
 xoops_cp_header();
 
-
 include_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 $myts = MyTextSanitizer::getInstance();
 
@@ -38,7 +37,6 @@ $perm_desc = 'Select categories that each group is allowed to view';
 // View Categories permissions
 $item_list_view = array();
 $block_view = array();
-
 
 $result_view = $xoopsDB->query("SELECT cod, titulo FROM " . $xoopsDB->prefix("rw_categorias") . " ");
 if ($xoopsDB->getRowsNum($result_view)) {

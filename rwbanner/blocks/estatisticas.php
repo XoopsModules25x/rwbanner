@@ -92,8 +92,8 @@ function estatisticas_banner($options){
         $arr3[$i]['class'] = ($arr3[$i]['status'] == 0)?'desativ':'ativ';
         $arr3[$i]['link'] = '<a class="'.$arr3[$i]['class'].'" href="javascript:void(0);" onclick="javascript: window.open(\''.dirname(dirname(__FILE__)) .'/admin/exibe.php?id='.$arr3[$i]['codigo'].'\',\'editar\',\'width='.($arr3[$i]['larg']+20).',height='.$arr3[$i]['alt'].',toolbar=no\');">'.$arr3[$i]['codigo'].'</a>';
         $data = $arr3[$i]['data'];
-    	$periodo = $arr3[$i]['periodo'];
-    	$maxdata = somaData($data,$periodo);
+        $periodo = $arr3[$i]['periodo'];
+        $maxdata = somaData($data,$periodo);
         if ($periodo == 0){
           $arr3[$i]['periodo'] = _MB_RWBANNER_EXIBREST;
         }else{
@@ -130,5 +130,6 @@ function estatisticas_banner($options){
   }else{
     $block['lang_msg2'] = sprintf(_MB_RWBANNER_MSG2,$xoopsConfig['sitename'],XOOPS_URL.'/user.php',XOOPS_URL.'/register.php');
   }
+
   return $block;
 }

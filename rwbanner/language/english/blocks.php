@@ -60,7 +60,6 @@ define('_MB_RWBANNER_OPTION19','Left margin (in pixels):');
 define('_MB_RWBANNER_OPTION20','Top margin (in pixels):');
 define('_MB_RWBANNER_OPTION21','Background color:');
 
-
 define('_MB_RWBANNER_TEXT1','This add will close automatically in a few seconds!');
 define('_MB_RWBANNER_TEXT2','Yes');
 define('_MB_RWBANNER_TEXT3','No');

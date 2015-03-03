@@ -63,29 +63,29 @@ if (is_object($xoopsUser) && $xoopsUser->isAdmin($xoopsModule->mid())){
       PRIMARY KEY  (`codigo`)
     ) ENGINE=MyISAM;
     ";
-	if (!$xoopsDB->queryF($sql)) {
+    if (!$xoopsDB->queryF($sql)) {
       echo '<br />'._AM_RWBANNER_UPGRADEFAILED1;
       $errors++;
     }
   }else{
-	if (!rwFieldExists('titulo',$xoopsDB->prefix('rw_banner'))) {
+    if (!rwFieldExists('titulo',$xoopsDB->prefix('rw_banner'))) {
       rwAddField("titulo varchar(255) default NULL AFTER categoria",$xoopsDB->prefix('rw_banner'));
-	}
-	if (!rwFieldExists('texto',$xoopsDB->prefix('rw_banner'))) {
+    }
+    if (!rwFieldExists('texto',$xoopsDB->prefix('rw_banner'))) {
       rwAddField("texto text AFTER titulo",$xoopsDB->prefix('rw_banner'));
-	}
-	if (!rwFieldExists('showimg',$xoopsDB->prefix('rw_banner'))) {
+    }
+    if (!rwFieldExists('showimg',$xoopsDB->prefix('rw_banner'))) {
       rwAddField("showimg int(1) NOT NULL default '1' AFTER htmlcode",$xoopsDB->prefix('rw_banner'));
-	}
-	if (!rwFieldExists('periodo',$xoopsDB->prefix('rw_banner'))) {
+    }
+    if (!rwFieldExists('periodo',$xoopsDB->prefix('rw_banner'))) {
       rwAddField("periodo int(5) NOT NULL default '0' AFTER data",$xoopsDB->prefix('rw_banner'));
-	}
-	if (!rwFieldExists('obs',$xoopsDB->prefix('rw_banner'))) {
+    }
+    if (!rwFieldExists('obs',$xoopsDB->prefix('rw_banner'))) {
       rwAddField("obs text AFTER idcliente",$xoopsDB->prefix('rw_banner'));
-	}
-	if (!rwFieldExists('maxclick',$xoopsDB->prefix('rw_banner'))) {
+    }
+    if (!rwFieldExists('maxclick',$xoopsDB->prefix('rw_banner'))) {
       rwAddField("maxclick int(11) NOT NULL default '0' AFTER clicks",$xoopsDB->prefix('rw_banner'));
-	}
+    }
   }
   
   if (!rwTableExists($xoopsDB->prefix('rw_categorias'))){
@@ -98,14 +98,14 @@ if (is_object($xoopsUser) && $xoopsUser->isAdmin($xoopsModule->mid())){
       PRIMARY KEY  (cod)
     ) ENGINE=MyISAM;
     ";
-	if (!$xoopsDB->queryF($sql)) {
+    if (!$xoopsDB->queryF($sql)) {
       echo '<br />'._AM_RWBANNER_UPGRADEFAILED2;
       $errors++;
     }
   }else{
-	if (rwFieldExists('modid',$xoopsDB->prefix('rw_categorias'))) {
+    if (rwFieldExists('modid',$xoopsDB->prefix('rw_categorias'))) {
       rwRemoveField("modid",$xoopsDB->prefix('rw_categorias'));
-	}
+    }
   }
   
   if (!rwTableExists($xoopsDB->prefix('rw_tags'))){
@@ -124,12 +124,12 @@ if (is_object($xoopsUser) && $xoopsUser->isAdmin($xoopsModule->mid())){
       PRIMARY KEY  (id)
     ) ENGINE=MyISAM;
     ";
-	if (!$xoopsDB->queryF($sql)) {
+    if (!$xoopsDB->queryF($sql)) {
       echo '<br />'._AM_RWBANNER_UPGRADEFAILED3;
       $errors++;
     }
     $sql = "INSERT INTO ".$xoopsDB->prefix('rw_tags').' (id,title,name,codbanner,categ,qtde,cols,modid,obs,status) VALUES (1,"RW-BANNER Default TAG","rw_banner","",1,1,1,"a:1:{i:0;s:1:\"0\";}","",1)';
-	if (!$xoopsDB->queryF($sql)) {
+    if (!$xoopsDB->queryF($sql)) {
       echo '<br />'._AM_RWBANNER_UPGRADEFAILED3;
       $errors++;
     }

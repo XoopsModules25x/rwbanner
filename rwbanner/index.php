@@ -35,11 +35,10 @@ include_once ('class/class.banner.php');
 include_once XOOPS_ROOT_PATH.'/class/pagenav.php';
 
 if ( file_exists("language/".$xoopsConfig['language']."/admin.php") ) {
-	include("language/".$xoopsConfig['language']."/admin.php");
+    include("language/".$xoopsConfig['language']."/admin.php");
 } else {
-	include("language/english/admin.php");
+    include("language/english/admin.php");
 }
-
 
 /*
 $cod = (isset($_GET['cod']))?$_GET['cod']:((isset($_POST['cod']))?$_POST['cod']:'');
@@ -169,8 +168,8 @@ function lista_banners($uid,$order=null,$seq=null,$limit=10,$start=0){
         $perc = '0';
       }
       $data = $lista_banners[$i]->getData();
-	  $periodo = $lista_banners[$i]->getPeriodo();
-  	  $maxdata = somaData($data,$periodo);
+      $periodo = $lista_banners[$i]->getPeriodo();
+      $maxdata = somaData($data,$periodo);
       if ($periodo == 0){
         $periodo = _AM_RWBANNER_BANNER_EXIBREST;
       }else{
