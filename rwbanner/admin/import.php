@@ -27,8 +27,6 @@ function BannersAdmin()
     $categ = new Categoria();
     $lista_categs = $categ->getCategorias('ORDER BY cod ASC');
 
-
-
     echo '<script>
           function pega(){
             myform = document.getElementsByTagName("input");
@@ -59,8 +57,6 @@ function BannersAdmin()
             }
           }
           </script>';
-
-
 
     echo '<form name="formimport" id="formimport" method="post" action="" onsubmit="return pega();">';
     echo "<div style='text-align:center'><b>"._AM_RWBANNER_IMPORT_TITLE."</b></div><br />

@@ -123,7 +123,6 @@ define('_MD_RWBANNER_MSG11','There was a problem editing the banner.');
 
 define('_MD_RWBANNER_TAG_ERROR','<div style="color: #FE2626;">There is something wrong with the banner display</div>');
 
-
 define('_MD_RWBANNER_SORT_CLICKS','Clicks');
 define('_MD_RWBANNER_SORT_ID','ID');
 define('_MD_RWBANNER_SORT_DATE','Registration');

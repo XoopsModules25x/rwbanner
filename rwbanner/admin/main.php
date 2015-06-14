@@ -136,7 +136,6 @@ switch ($op){
 function lista_banners($order=null,$seq=null,$limit=10,$start=0){
   global $xoopsModule, $pathIcon16;;
 
-
   $banner = new RWbanners();
   $total = $banner->getRowNum();
   $ord = $order;
@@ -209,8 +208,8 @@ function lista_banners($order=null,$seq=null,$limit=10,$start=0){
       $perc = '0';
     }
     $data = $lista_banners[$i]->getData();
-	$periodo = $lista_banners[$i]->getPeriodo();
-	$maxdata = somaData($data,$periodo);
+    $periodo = $lista_banners[$i]->getPeriodo();
+    $maxdata = somaData($data,$periodo);
     if ($periodo == 0){
       $periodo = _AM_RWBANNER_BANNER_EXIBREST;
     }else{

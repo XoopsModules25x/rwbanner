@@ -27,24 +27,24 @@ $xoopsTpl->assign( 'insSelected', $selected );
 $moduleId = $xoopsModule->getVar( 'mid' );
 
 switch( $permission ) {
-	// Права на просмотр
-	case 1:
-		$formTitle = _AM_INSTRUCTION_PERM_VIEW;
-		$permissionName = 'instruction_view';
-		$permissionDescription = _AM_INSTRUCTION_PERM_VIEW_DSC;
-		break;
-	// Права на добавление	
-	case 2:
-		$formTitle = _AM_INSTRUCTION_PERM_SUBMIT;
-		$permissionName = 'instruction_submit';
-		$permissionDescription = _AM_INSTRUCTION_PERM_SUBMIT_DSC;
-		break;
-	// Права на редактирование	
-	case 3:
-		$formTitle = _AM_INSTRUCTION_PERM_EDIT;
-		$permissionName = 'instruction_edit';
-		$permissionDescription = _AM_INSTRUCTION_PERM_EDIT_DSC;
-		break;
+    // Права на просмотр
+    case 1:
+        $formTitle = _AM_INSTRUCTION_PERM_VIEW;
+        $permissionName = 'instruction_view';
+        $permissionDescription = _AM_INSTRUCTION_PERM_VIEW_DSC;
+        break;
+    // Права на добавление
+    case 2:
+        $formTitle = _AM_INSTRUCTION_PERM_SUBMIT;
+        $permissionName = 'instruction_submit';
+        $permissionDescription = _AM_INSTRUCTION_PERM_SUBMIT_DSC;
+        break;
+    // Права на редактирование
+    case 3:
+        $formTitle = _AM_INSTRUCTION_PERM_EDIT;
+        $permissionName = 'instruction_edit';
+        $permissionDescription = _AM_INSTRUCTION_PERM_EDIT_DSC;
+        break;
 }
 
 // Права
@@ -53,9 +53,9 @@ $permissionsForm = new XoopsGroupPermForm( $formTitle, $moduleId, $permissionNam
 $sql = 'SELECT cid, pid, title FROM ' . $xoopsDB->prefix('instruction_cat') . ' ORDER BY title';
 $result = $xoopsDB->query($sql);
 if( $result ) {
-	while ( $row = $xoopsDB->fetchArray( $result ) ) {
-		$permissionsForm->addItem( $row['cid'], $row['title'], $row['pid'] );
-	}
+    while ( $row = $xoopsDB->fetchArray( $result ) ) {
+        $permissionsForm->addItem( $row['cid'], $row['title'], $row['pid'] );
+    }
 }
 
 //echo $permissionsForm->render();

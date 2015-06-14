@@ -58,88 +58,88 @@ class RWbanners {
     var $status;
     var $target;
     var $idcliente;
-	var $errormsg;
-	var $larg;
+    var $errormsg;
+    var $larg;
     var $alt;
     var $obs;
 
     //Construtor
-	function __construct ($dados=null, $id = null)
-	{
+    function __construct ($dados=null, $id = null)
+    {
         if ($dados == null && $id != null){
-    	  $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-    	  $sql = 'SELECT * FROM '.$this->db->prefix('rw_banner').' WHERE codigo='.$id;
-    	  $query = $this->db->query($sql);
-    	  $row = $this->db->fetchArray($query);
+          $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+          $sql = 'SELECT * FROM '.$this->db->prefix('rw_banner').' WHERE codigo='.$id;
+          $query = $this->db->query($sql);
+          $row = $this->db->fetchArray($query);
 
-		  $this->codigo = $row['codigo'];
-		  $this->categoria = $row['categoria'];
-		  $this->titulo = $row['titulo'];
-		  $this->texto = $row['texto'];
-		  $this->url = $row['url'];
-		  $this->grafico = $row['grafico'];
-		  $this->usarhtml = $row['usarhtml'];
-		  $this->htmlcode = $row['htmlcode'];
-		  $this->showimg = $row['showimg'];
-		  $this->exibicoes = $row['exibicoes'];
-		  $this->maxexib = $row['maxexib'];
-		  $this->clicks = $row['clicks'];
-		  $this->maxclick = $row['maxclick'];
-		  $this->data = $row['data'];
-		  $this->periodo = $row['periodo'];
-		  $this->status = $row['status'];
-		  $this->target = $row['target'];
-		  $this->idcliente = $row['idcliente'];
-		  $this->larg = $this->setLargura();
-		  $this->alt = $this->setAltura();
-		  $this->obs = $row['obs'];
-		  
+          $this->codigo = $row['codigo'];
+          $this->categoria = $row['categoria'];
+          $this->titulo = $row['titulo'];
+          $this->texto = $row['texto'];
+          $this->url = $row['url'];
+          $this->grafico = $row['grafico'];
+          $this->usarhtml = $row['usarhtml'];
+          $this->htmlcode = $row['htmlcode'];
+          $this->showimg = $row['showimg'];
+          $this->exibicoes = $row['exibicoes'];
+          $this->maxexib = $row['maxexib'];
+          $this->clicks = $row['clicks'];
+          $this->maxclick = $row['maxclick'];
+          $this->data = $row['data'];
+          $this->periodo = $row['periodo'];
+          $this->status = $row['status'];
+          $this->target = $row['target'];
+          $this->idcliente = $row['idcliente'];
+          $this->larg = $this->setLargura();
+          $this->alt = $this->setAltura();
+          $this->obs = $row['obs'];
+          
         }elseif ($dados != null){
-		  $this->codigo = (isset($dados['codigo']))?$dados['codigo']:'';
-		  $this->categoria = (isset($dados['categoria']))?$dados['categoria']:'';
-		  $this->titulo = (isset($dados['titulo']))?$dados['titulo']:'';
-		  $this->texto = (isset($dados['texto']))?$dados['texto']:'';
-		  $this->url = (isset($dados['url']))?$dados['url']:'';
-		  $this->grafico = (isset($dados['grafico']))?$dados['grafico']:'';
-		  $this->usarhtml = (isset($dados['usarhtml']))?$dados['usarhtml']:'';
-		  $this->htmlcode = (isset($dados['htmlcode']))?$dados['htmlcode']:'';
-		  $this->showimg = (isset($dados['showimg']))?$dados['showimg']:'';
-		  $this->exibicoes = (isset($dados['exibicoes']))?$dados['exibicoes']:'';
-		  $this->maxexib = (isset($dados['maxexib']))?$dados['maxexib']:'';
-		  $this->clicks = (isset($dados['clicks']))?$dados['clicks']:'';
-		  $this->maxclick = (isset($dados['maxclick']))?$dados['maxclick']:'';
-		  $this->data = (isset($dados['data']))?$dados['data']:'';
-		  $this->periodo = (isset($dados['periodo']))?$dados['periodo']:'';
-		  $this->status = (isset($dados['status']))?$dados['status']:$this->status;
-		  $this->target = (isset($dados['target']))?$dados['target']:'';
-		  $this->idcliente = (isset($dados['idcliente']))?$dados['idcliente']:'';
-		  $this->larg = (isset($dados['larg']))?$dados['larg']:'';
-		  $this->alt = (isset($dados['alt']))?$dados['alt']:'';
-		  $this->obs = (isset($dados['obs']))?$dados['obs']:'';
+          $this->codigo = (isset($dados['codigo']))?$dados['codigo']:'';
+          $this->categoria = (isset($dados['categoria']))?$dados['categoria']:'';
+          $this->titulo = (isset($dados['titulo']))?$dados['titulo']:'';
+          $this->texto = (isset($dados['texto']))?$dados['texto']:'';
+          $this->url = (isset($dados['url']))?$dados['url']:'';
+          $this->grafico = (isset($dados['grafico']))?$dados['grafico']:'';
+          $this->usarhtml = (isset($dados['usarhtml']))?$dados['usarhtml']:'';
+          $this->htmlcode = (isset($dados['htmlcode']))?$dados['htmlcode']:'';
+          $this->showimg = (isset($dados['showimg']))?$dados['showimg']:'';
+          $this->exibicoes = (isset($dados['exibicoes']))?$dados['exibicoes']:'';
+          $this->maxexib = (isset($dados['maxexib']))?$dados['maxexib']:'';
+          $this->clicks = (isset($dados['clicks']))?$dados['clicks']:'';
+          $this->maxclick = (isset($dados['maxclick']))?$dados['maxclick']:'';
+          $this->data = (isset($dados['data']))?$dados['data']:'';
+          $this->periodo = (isset($dados['periodo']))?$dados['periodo']:'';
+          $this->status = (isset($dados['status']))?$dados['status']:$this->status;
+          $this->target = (isset($dados['target']))?$dados['target']:'';
+          $this->idcliente = (isset($dados['idcliente']))?$dados['idcliente']:'';
+          $this->larg = (isset($dados['larg']))?$dados['larg']:'';
+          $this->alt = (isset($dados['alt']))?$dados['alt']:'';
+          $this->obs = (isset($dados['obs']))?$dados['obs']:'';
         }else{
-		  $this->codigo = '';
-		  $this->categoria = '';
-		  $this->titulo = '';
-		  $this->texto = '';
-		  $this->url = '';
-		  $this->grafico = '';
-		  $this->usarhtml = '';
-		  $this->htmlcode = '';
-		  $this->showimg = '';
-		  $this->exibicoes = '';
-		  $this->maxexib = '';
-		  $this->clicks = '';
-		  $this->maxclick = '';
-		  $this->data = '';
-		  $this->periodo = '';
-		  $this->status = '';
-		  $this->target = '';
-		  $this->idcliente = '';
-		  $this->larg = '';
-		  $this->alt = '';
-		  $this->obs = '';
+          $this->codigo = '';
+          $this->categoria = '';
+          $this->titulo = '';
+          $this->texto = '';
+          $this->url = '';
+          $this->grafico = '';
+          $this->usarhtml = '';
+          $this->htmlcode = '';
+          $this->showimg = '';
+          $this->exibicoes = '';
+          $this->maxexib = '';
+          $this->clicks = '';
+          $this->maxclick = '';
+          $this->data = '';
+          $this->periodo = '';
+          $this->status = '';
+          $this->target = '';
+          $this->idcliente = '';
+          $this->larg = '';
+          $this->alt = '';
+          $this->obs = '';
         }
-	}
+    }
 
     // Métodos get e set de todos os atributos
     function setCodigo($codigo)
@@ -328,117 +328,125 @@ class RWbanners {
     }
     
     //Insere um novo banner no banco de dados
-	function grava($flag=null){
-		$this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$sts = ($flag != null)?$flag:1;
-		$sql = 'INSERT INTO '.$this->db->prefix('rw_banner').' (codigo, categoria, titulo, texto, url, grafico, usarhtml, htmlcode, showimg, exibicoes, maxexib, clicks, maxclick, data, periodo, status, target, idcliente, obs) VALUES ("'.$this->codigo.'", "'.$this->categoria.'", "'.$this->titulo.'", \''.$this->texto.'\', "'.$this->url.'", "'.$this->grafico.'", "'.$this->usarhtml.'", \''.$this->htmlcode.'\', "'.$this->showimg.'", \''.$this->exibicoes.'\', \''.$this->maxexib.'\', "'.$this->clicks.'", \''.$this->maxclick.'\', "'.date('Y-m-d').'", "'.$this->periodo.'", "'.$sts.'", "'.$this->target.'", "'.$this->idcliente.'", "'.$this->obs.'")';
+    function grava($flag=null){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+        $sts = ($flag != null)?$flag:1;
+        $sql = 'INSERT INTO '.$this->db->prefix('rw_banner').' (codigo, categoria, titulo, texto, url, grafico, usarhtml, htmlcode, showimg, exibicoes, maxexib, clicks, maxclick, data, periodo, status, target, idcliente, obs) VALUES ("'.$this->codigo.'", "'.$this->categoria.'", "'.$this->titulo.'", \''.$this->texto.'\', "'.$this->url.'", "'.$this->grafico.'", "'.$this->usarhtml.'", \''.$this->htmlcode.'\', "'.$this->showimg.'", \''.$this->exibicoes.'\', \''.$this->maxexib.'\', "'.$this->clicks.'", \''.$this->maxclick.'\', "'.date('Y-m-d').'", "'.$this->periodo.'", "'.$sts.'", "'.$this->target.'", "'.$this->idcliente.'", "'.$this->obs.'")';
         if ($query = $this->db->queryF($sql))
           return true;
         else{
           $this->setError($this->db->error());
+
           return false;
         }
-	}
+    }
 
-	//Edita o banner instanciado e salva as alterações no banco de dados
-	function edita(){
-		$this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+    //Edita o banner instanciado e salva as alterações no banco de dados
+    function edita(){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
         $myts =& MyTextSanitizer::getInstance();
         $sql = 'UPDATE '.$this->db->prefix('rw_banner').' SET categoria="'.$this->categoria.'", titulo="'.$this->titulo.'", texto="'.$this->texto.'", url="'.$this->url.'", grafico="'.$this->grafico.'", usarhtml="'.$this->usarhtml.'", htmlcode=\''.$this->htmlcode.'\', showimg="'.$this->showimg.'", exibicoes="'.$this->exibicoes.'", maxexib="'.$this->maxexib.'", clicks="'.$this->clicks.'", maxclick="'.$this->maxclick.'", periodo="'.$this->periodo.'", status="'.$this->status.'", target="'.$this->target.'", idcliente="'.$this->idcliente.'" WHERE codigo= '.$this->codigo;
         if ($query = $this->db->queryF($sql))
           return true;
         else{
           $this->setError($this->db->error());
+
           return false;
         }
-	}
+    }
 
-	//Exclui o banner instanciado do banco de dados
-	function exclui(){
-		$this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$sql = 'DELETE FROM '.$this->db->prefix('rw_banner').' WHERE codigo= '.$this->codigo;
+    //Exclui o banner instanciado do banco de dados
+    function exclui(){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+        $sql = 'DELETE FROM '.$this->db->prefix('rw_banner').' WHERE codigo= '.$this->codigo;
         if ($query = $this->db->queryF($sql))
           return true;
         else{
           $this->setError($this->db->error());
+
           return false;
         }
-	}
+    }
 
     //Retorna um array associativo de todos os banners encontrados de acordo com os parâmetros.
-	function getBanners($admin = false, $order = null, $categ = null, $limit = null, $start = 0){
-		$this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$extra = ($categ != null)?' WHERE categoria='.$categ:'';
-		$extra .= (!$admin && $categ != null)?' and status=1':((!$admin && $categ == null)?' WHERE status=1':'');
-		$extra .= ($order != null)?' '.$order:'';
-		$extra .= ($limit != null)?' LIMIT '.$start.','.$limit:'';
-   	    $sql = 'SELECT codigo FROM '.$this->db->prefix('rw_banner').$extra;
-    	$query = $this->db->query($sql);
-    	$banners = array();
-    	while(list($id) = $this->db->fetchRow($query)){
+    function getBanners($admin = false, $order = null, $categ = null, $limit = null, $start = 0){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+        $extra = ($categ != null)?' WHERE categoria='.$categ:'';
+        $extra .= (!$admin && $categ != null)?' and status=1':((!$admin && $categ == null)?' WHERE status=1':'');
+        $extra .= ($order != null)?' '.$order:'';
+        $extra .= ($limit != null)?' LIMIT '.$start.','.$limit:'';
+        $sql = 'SELECT codigo FROM '.$this->db->prefix('rw_banner').$extra;
+        $query = $this->db->query($sql);
+        $banners = array();
+        while(list($id) = $this->db->fetchRow($query)){
           $banner = new RWbanners(null,$id);
-      	  unset($banner->db);
-      	  unset($banner->errormsg);
-      	  $banners[] =& $banner;
-      	  unset($banner);
-    	}
-    	return $banners;
-	}
+            unset($banner->db);
+            unset($banner->errormsg);
+            $banners[] =& $banner;
+            unset($banner);
+        }
 
-	//Retorna o nome da categoria do banner
-	function getBannnerCategName(){
-        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$sql = 'SELECT titulo FROM '.$this->db->prefix('rw_categorias').' WHERE cod='.$this->categoria;
-    	$query = $this->db->query($sql);
-    	list($nome) = $this->db->fetchRow($query);
-    	return $nome;
-	}
+        return $banners;
+    }
 
-	//Retorna o nome do cliente do banner
-	function getBannnerClientName(){
+    //Retorna o nome da categoria do banner
+    function getBannnerCategName(){
         $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$sql = 'SELECT uname FROM '.$this->db->prefix('users').' WHERE uid='.$this->idcliente;
-    	$query = $this->db->query($sql);
-    	list($nome) = $this->db->fetchRow($query);
-    	return $nome;
-	}
-	
-	//Retorna a quantidade de registros encontrados de acordo com os parâmetros
-	function getRowNum($categ=null, $id=null){
-		$this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$extra = ($categ != null)?' and categoria='.$categ:'';
-		$extra .= ($id != null)?' and status!=2 and idcliente='.$id:'';
-   	    $sql = 'SELECT codigo FROM '.$this->db->prefix('rw_banner').' WHERE 1=1 '.$extra;
-    	$query = $this->db->query($sql);
+        $sql = 'SELECT titulo FROM '.$this->db->prefix('rw_categorias').' WHERE cod='.$this->categoria;
+        $query = $this->db->query($sql);
+        list($nome) = $this->db->fetchRow($query);
+
+        return $nome;
+    }
+
+    //Retorna o nome do cliente do banner
+    function getBannnerClientName(){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+        $sql = 'SELECT uname FROM '.$this->db->prefix('users').' WHERE uid='.$this->idcliente;
+        $query = $this->db->query($sql);
+        list($nome) = $this->db->fetchRow($query);
+
+        return $nome;
+    }
+    
+    //Retorna a quantidade de registros encontrados de acordo com os parâmetros
+    function getRowNum($categ=null, $id=null){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+        $extra = ($categ != null)?' and categoria='.$categ:'';
+        $extra .= ($id != null)?' and status!=2 and idcliente='.$id:'';
+        $sql = 'SELECT codigo FROM '.$this->db->prefix('rw_banner').' WHERE 1=1 '.$extra;
+        $query = $this->db->query($sql);
         $total = $this->db->getRowsNum($query);
 
-    	return $total;
-	}
-	
-	//Recupera a largura e altura da categoria correspondente ao banner instanciado
-	function setLargura(){
-		$this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$sql = 'SELECT larg FROM '.$this->db->prefix('rw_categorias').' WHERE cod='.$this->categoria;
-    	$query = $this->db->query($sql);
-    	list($larg) = $this->db->fetchRow($query);
-    	return $larg;
-	}
-	function getLargura(){
-	   return $this->larg;
-	}
-	
-	function setAltura(){
-		$this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$sql = 'SELECT alt FROM '.$this->db->prefix('rw_categorias').' WHERE cod='.$this->getCategoria();
-    	$query = $this->db->query($sql);
-    	list($alt) = $this->db->fetchRow($query);
-    	return $alt;
-	}
-	function getAltura(){
-	   return $this->alt;
-	}
-	
-	function showBanner($categ=0,$qtde=1,$cols=1,$align='center'){
+        return $total;
+    }
+    
+    //Recupera a largura e altura da categoria correspondente ao banner instanciado
+    function setLargura(){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+        $sql = 'SELECT larg FROM '.$this->db->prefix('rw_categorias').' WHERE cod='.$this->categoria;
+        $query = $this->db->query($sql);
+        list($larg) = $this->db->fetchRow($query);
+
+        return $larg;
+    }
+    function getLargura(){
+       return $this->larg;
+    }
+    
+    function setAltura(){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+        $sql = 'SELECT alt FROM '.$this->db->prefix('rw_categorias').' WHERE cod='.$this->getCategoria();
+        $query = $this->db->query($sql);
+        list($alt) = $this->db->fetchRow($query);
+
+        return $alt;
+    }
+    function getAltura(){
+       return $this->alt;
+    }
+    
+    function showBanner($categ=0,$qtde=1,$cols=1,$align='center'){
       $cat = ($categ != 0)?$categ:null;
       $arr = $this->getBanners(false, 'ORDER BY RAND()', $cat, $qtde);
       $cont = 0;
@@ -492,10 +500,11 @@ class RWbanners {
         }
       }
       $showban .= '</tr></table>';
+
       return $showban;
-	}
-	
-	function show1Banner($id=0, $align='center'){
+    }
+    
+    function show1Banner($id=0, $align='center'){
       $ban = new RWbanners(null,$id);
       $showban = '<table border="0" cellpadding="0" cellspacing="5"><tr>';
         if ($ban->getUsarhtml() == 1){
@@ -534,60 +543,63 @@ class RWbanners {
         $showban .= '<td>'.$bannerobject.'</td>';
         $ban->incHits();
         $showban .= '</tr></table>';
+
         return $showban;
-	}
-	
-	//Incrementa o número de exibições do banner e caso o limite de exibições, cliques ou período seja atingido desativa o banner
-	function incHits(){
-		$hits = $this->getExibicoes();
-		$hits++;
-		$data = $this->getData();
-		$periodo = $this->getPeriodo();
-		$maxdata = somaData($data,$periodo);
+    }
+    
+    //Incrementa o número de exibições do banner e caso o limite de exibições, cliques ou período seja atingido desativa o banner
+    function incHits(){
+        $hits = $this->getExibicoes();
+        $hits++;
+        $data = $this->getData();
+        $periodo = $this->getPeriodo();
+        $maxdata = somaData($data,$periodo);
         if (($this->getMaxexib() == 0 || $hits < $this->getMaxexib()) && ($this->getMaxclick() == 0 || $this->getClicks() < $this->getMaxclick()) && ($this->getPeriodo() == 0 || date('Y-m-d') <= $maxdata) )
           $this->setExibicoes($hits);
-  		elseif($hits >= $this->getMaxexib())
+        elseif($hits >= $this->getMaxexib())
           $this->setStatus(0);
-  		elseif($this->getClicks() >= $this->getMaxclick())
+        elseif($this->getClicks() >= $this->getMaxclick())
           $this->setStatus(0);
-  		elseif(date('Y-m-d') > $maxdata)
+        elseif(date('Y-m-d') > $maxdata)
           $this->setStatus(0);
         $this->edita();
-	}
-	
-	//Incrementa o número de clicks do banner
-	function incClicks(){
-		$clicks = $this->getClicks();
-		$clicks++;
+    }
+    
+    //Incrementa o número de clicks do banner
+    function incClicks(){
+        $clicks = $this->getClicks();
+        $clicks++;
         if ($this->getMaxclick() == 0 || $this->getClicks() < $this->getMaxclick())
-  		  $this->setClicks($clicks);
-  		elseif($this->getClicks() >= $this->getMaxclick())
+          $this->setClicks($clicks);
+        elseif($this->getClicks() >= $this->getMaxclick())
           $this->setStatus(0);
         $this->edita();
-	}
+    }
 
     //Altera o status do banner. Se o parametro sts for passado altera o status atual pelo sts senão ele altera o status para o inverso do status atual Ex.: Status = 0; Novo Status = 1;
     function mudaStatus($sts=null) {
       $this->status = (isset($sts))?$sts:($this->status == 1)?0:1;
+
       return $this->edita();
     }
     
     //Retorna todos os banners de um determinado cliente
-	function getAllByClient($uid, $order = null, $categ = null, $limit = null, $start = 0){
-		$this->db = &XoopsDatabaseFactory::getDatabaseConnection();
-		$extra = ($categ != null)?' and categoria='.$categ:'';
-		$extra .= ($order != null)?' '.$order:'';
-		$extra .= ($limit != null)?' LIMIT '.$start.','.$limit:'';
-   	    $sql = 'SELECT codigo FROM '.$this->db->prefix('rw_banner').' WHERE idcliente='.$uid.' and status!=2'.$extra;
-    	$query = $this->db->query($sql);
-    	$banners = array();
-    	while(list($id) = $this->db->fetchRow($query)){
+    function getAllByClient($uid, $order = null, $categ = null, $limit = null, $start = 0){
+        $this->db = &XoopsDatabaseFactory::getDatabaseConnection();
+        $extra = ($categ != null)?' and categoria='.$categ:'';
+        $extra .= ($order != null)?' '.$order:'';
+        $extra .= ($limit != null)?' LIMIT '.$start.','.$limit:'';
+        $sql = 'SELECT codigo FROM '.$this->db->prefix('rw_banner').' WHERE idcliente='.$uid.' and status!=2'.$extra;
+        $query = $this->db->query($sql);
+        $banners = array();
+        while(list($id) = $this->db->fetchRow($query)){
           $banner = new RWbanners(null,$id);
-      	  unset($banner->db);
-      	  unset($banner->errormsg);
-      	  $banners[] =& $banner;
-      	  unset($banner);
-    	}
-    	return $banners;
-	}
+            unset($banner->db);
+            unset($banner->errormsg);
+            $banners[] =& $banner;
+            unset($banner);
+        }
+
+        return $banners;
+    }
 }

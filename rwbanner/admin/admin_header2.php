@@ -44,7 +44,7 @@ if (is_object($xoopsUser)){
     $module          = $module_handler->getByDirname($dirname);
   if (!$xoopsUser->isAdmin($module->mid())){
     redirect_header(XOOPS_URL."/",1,_MD_RWBANNER_NOPERM);
-	exit();
+    exit();
   }
 }else{
   redirect_header(XOOPS_URL."/",1,_MD_RWBANNER_NOPERM);
@@ -54,9 +54,9 @@ if (is_object($xoopsUser)){
 include_once XOOPS_ROOT_PATH."/modules/".$module->dirname()."/include/functions.php";
 
 if ( file_exists("../language/".$xoopsConfig['language']."/modinfo.php") ) {
-	include("../language/".$xoopsConfig['language']."/modinfo.php");
+    include("../language/".$xoopsConfig['language']."/modinfo.php");
 } else {
-	include("../language/english/modinfo.php");
+    include("../language/english/modinfo.php");
 }
 
 $myts =& MyTextSanitizer::getInstance();

@@ -89,7 +89,6 @@ $modversion['tables'][0] = _MI_RWBANNER_TABLE1;
 $modversion['tables'][1] = _MI_RWBANNER_TABLE2;
 $modversion['tables'][2] = _MI_RWBANNER_TABLE3;
 
-
 // Admin
 $modversion['hasAdmin'] = 1;
 $modversion['adminindex'] = "admin/index.php";

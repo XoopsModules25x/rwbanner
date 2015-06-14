@@ -31,22 +31,22 @@
 
 return array(
 
-     "bmp"		=> "image/bmp",
+     "bmp"        => "image/bmp",
 
-     "gif"		=> "image/gif",
+     "gif"        => "image/gif",
 
-     "jpeg"		=> "image/jpeg",
+     "jpeg"        => "image/jpeg",
 
-     "jpg"		=> "image/jpeg",
+     "jpg"        => "image/jpeg",
 
-     "jpe"		=> "image/jpeg",
+     "jpe"        => "image/jpeg",
 
-     "png"		=> "image/png",
+     "png"        => "image/png",
 
-     "tiff"		=> "image/tiff",
+     "tiff"        => "image/tiff",
 
-     "tif"		=> "image/tif",
+     "tif"        => "image/tif",
      
-     "swf"		=> "application/x-shockwave-flash",
+     "swf"        => "application/x-shockwave-flash",
 
 );

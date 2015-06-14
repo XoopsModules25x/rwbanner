@@ -142,7 +142,6 @@ if ($xoopsUser->isAdmin($xoopsModule->mid())) {
             }
             echo "</select></td>";
 
-
             echo"<td class='$class' align='center'><select size='5' name='groups[" . $i->getVar("bid")
                 . "][]' id='groups[" . $i->getVar("bid") . "][]' multiple='multiple'>";
             foreach ($groups as $grp) {

@@ -31,11 +31,7 @@
 
 if( ! defined( 'XOOPS_ROOT_PATH' ) ) exit ;
 
-
-
 $usespaw = empty( $_GET['usespaw'] ) ? 0 : 1 ;
-
-
 
 require_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 
@@ -45,7 +41,7 @@ $form = new XoopsThemeForm($block['form_title'], 'blockform', "admin.php" ) ;
 
 if (isset($block['name'])) {
 
-	$form->addElement(new XoopsFormLabel(_AM_NAME, $block['name']));
+    $form->addElement(new XoopsFormLabel(_AM_NAME, $block['name']));
 
 }
 
@@ -81,99 +77,93 @@ $form->addElement($mod_select);
 
 $form->addElement(new XoopsFormText(_AM_TITLE, 'btitle', 50, 255, $block['title']), false);
 
-
-
 if ( $block['is_custom'] ) {
 
+    // Custom Block's textarea
 
+    $notice_for_tags = '<span style="font-size:x-small;font-weight:bold;">'._AM_USEFULTAGS.'</span><br /><span style="font-size:x-small;font-weight:normal;">'.sprintf(_AM_BLOCKTAG1, '{X_SITEURL}', XOOPS_URL.'/').'</span>' ;
 
-	// Custom Block's textarea
+    $current_op = @$_GET['op'] == 'clone' ? 'clone' : 'edit' ;
 
-	$notice_for_tags = '<span style="font-size:x-small;font-weight:bold;">'._AM_USEFULTAGS.'</span><br /><span style="font-size:x-small;font-weight:normal;">'.sprintf(_AM_BLOCKTAG1, '{X_SITEURL}', XOOPS_URL.'/').'</span>' ;
+    $uri_to_myself = XOOPS_URL . "/modules/blocksadmin/admin/admin.php?fct=blocksadmin&amp;op=$current_op&amp;bid={$block['bid']}" ;
 
-	$current_op = @$_GET['op'] == 'clone' ? 'clone' : 'edit' ;
+    // $can_use_spaw = check_browser_can_use_spaw() ;
 
-	$uri_to_myself = XOOPS_URL . "/modules/blocksadmin/admin/admin.php?fct=blocksadmin&amp;op=$current_op&amp;bid={$block['bid']}" ;
+    $can_use_spaw = true ;
 
-	// $can_use_spaw = check_browser_can_use_spaw() ;
+    if( $usespaw && $can_use_spaw ) {
 
-	$can_use_spaw = true ;
+        // SPAW Config
 
-	if( $usespaw && $can_use_spaw ) {
+        include XOOPS_ROOT_PATH.'/common/spaw/spaw_control.class.php' ;
 
-		// SPAW Config
+        ob_start() ;
 
-		include XOOPS_ROOT_PATH.'/common/spaw/spaw_control.class.php' ;
+        $sw = new SPAW_Wysiwyg( 'bcontent' , $block['content'] ) ;
 
-		ob_start() ;
+        $sw->show() ;
 
-		$sw = new SPAW_Wysiwyg( 'bcontent' , $block['content'] ) ;
+        $textarea = new XoopsFormLabel( _AM_CONTENT , ob_get_contents() ) ;
 
-		$sw->show() ;
+        $textarea->setDescription( $notice_for_tags . "<br /><br /><a href='$uri_to_myself&amp;usespaw=0'>NORMAL</a>" ) ;
 
-		$textarea = new XoopsFormLabel( _AM_CONTENT , ob_get_contents() ) ;
+        ob_end_clean() ;
 
-		$textarea->setDescription( $notice_for_tags . "<br /><br /><a href='$uri_to_myself&amp;usespaw=0'>NORMAL</a>" ) ;
+    } else {
 
-		ob_end_clean() ;
+        $textarea = new XoopsFormDhtmlTextArea(_AM_CONTENT, 'bcontent', htmlspecialchars( $block['content'] , ENT_QUOTES ) , 15, 70);
 
-	} else {
+        if( $can_use_spaw ) {
 
-		$textarea = new XoopsFormDhtmlTextArea(_AM_CONTENT, 'bcontent', htmlspecialchars( $block['content'] , ENT_QUOTES ) , 15, 70);
+            $textarea->setDescription( $notice_for_tags . "<br /><br /><a href='$uri_to_myself&amp;usespaw=1'>SPAW</a>" ) ;
 
-		if( $can_use_spaw ) {
+        } else {
 
-			$textarea->setDescription( $notice_for_tags . "<br /><br /><a href='$uri_to_myself&amp;usespaw=1'>SPAW</a>" ) ;
+            $textarea->setDescription( $notice_for_tags ) ;
 
-		} else {
+        }
 
-			$textarea->setDescription( $notice_for_tags ) ;
+    }
 
-		}
+    $form->addElement($textarea, true);
 
-	}
+    $ctype_select = new XoopsFormSelect(_AM_CTYPE, 'bctype', $block['ctype']);
 
-	$form->addElement($textarea, true);
+    $ctype_select->addOptionArray(array('H' => _AM_HTML, 'P' => _AM_PHP, 'S' => _AM_RWBANNER_AFWSMILE, 'T' => _AM_RWBANNER_AFNOSMILE));
 
-
-
-	$ctype_select = new XoopsFormSelect(_AM_CTYPE, 'bctype', $block['ctype']);
-
-	$ctype_select->addOptionArray(array('H' => _AM_HTML, 'P' => _AM_PHP, 'S' => _AM_RWBANNER_AFWSMILE, 'T' => _AM_RWBANNER_AFNOSMILE));
-
-	$form->addElement($ctype_select);
+    $form->addElement($ctype_select);
 
 } else {
 
-	if ($block['template'] != '' && ! defined('XOOPS_ORETEKI') ) {
+    if ($block['template'] != '' && ! defined('XOOPS_ORETEKI') ) {
 
-		$tplfile_handler =& xoops_gethandler('tplfile');
+        $tplfile_handler =& xoops_gethandler('tplfile');
 
-		$btemplate =& $tplfile_handler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $block['bid']);
+        $btemplate =& $tplfile_handler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $block['bid']);
 
-		if (count($btemplate) > 0) {
+        if (count($btemplate) > 0) {
 
-			$form->addElement(new XoopsFormLabel(_AM_CONTENT, '<a href="'.XOOPS_URL.'/modules/system/admin.php?fct=tplsets&op=edittpl&id='.$btemplate[0]->getVar('tpl_id').'">'._AM_EDITTPL.'</a>'));
+            $form->addElement(new XoopsFormLabel(_AM_CONTENT, '<a href="'.XOOPS_URL.'/modules/system/admin.php?fct=tplsets&op=edittpl&id='.$btemplate[0]->getVar('tpl_id').'">'._AM_EDITTPL.'</a>'));
 
-		} else {
+        } else {
 
-			$btemplate2 =& $tplfile_handler->find('default', 'block', $block['bid']);
+            $btemplate2 =& $tplfile_handler->find('default', 'block', $block['bid']);
 
-			if (count($btemplate2) > 0) {
+            if (count($btemplate2) > 0) {
 
-				$form->addElement(new XoopsFormLabel(_AM_CONTENT, '<a href="'.XOOPS_URL.'/modules/system/admin.php?fct=tplsets&op=edittpl&id='.$btemplate2[0]->getVar('tpl_id').'" target="_blank">'._AM_EDITTPL.'</a>'));
+                $form->addElement(new XoopsFormLabel(_AM_CONTENT, '<a href="'.XOOPS_URL.'/modules/system/admin.php?fct=tplsets&op=edittpl&id='.$btemplate2[0]->getVar('tpl_id').'" target="_blank">'._AM_EDITTPL.'</a>'));
 
-			}
+            }
 
-		}
+        }
 
-	}
+    }
 
-	if ($block['edit_form'] != false) {
+    if ($block['edit_form'] != false) {
 
-		$form->addElement(new XoopsFormLabel(_AM_OPTIONS, $block['edit_form']));
+        $form->addElement(new XoopsFormLabel(_AM_OPTIONS, $block['edit_form']));
 
-	}
+    }
 
 }
 
@@ -185,7 +175,7 @@ $form->addElement($cache_select);
 
 if (isset($block['bid'])) {
 
-	$form->addElement(new XoopsFormHidden('bid', $block['bid']));
+    $form->addElement(new XoopsFormHidden('bid', $block['bid']));
 
 }
 
@@ -199,7 +189,7 @@ $button_tray = new XoopsFormElementTray('', '&nbsp;');
 
 if ($block['is_custom']) {
 
-	$button_tray->addElement(new XoopsFormButton('', 'previewblock', _PREVIEW, "submit"));
+    $button_tray->addElement(new XoopsFormButton('', 'previewblock', _PREVIEW, "submit"));
 
 }
 
@@ -207,43 +197,38 @@ $button_tray->addElement(new XoopsFormButton('', 'submitblock', $block['submit_b
 
 $form->addElement($button_tray);
 
-
-
-
-
 // checks browser compatibility with the control
 
 function check_browser_can_use_spaw() {
 
-	$browser = $_SERVER['HTTP_USER_AGENT'] ;
+    $browser = $_SERVER['HTTP_USER_AGENT'] ;
 
-	// check if msie
+    // check if msie
 
-	if( preg_match( "/MSIE[^;]*/i" , $browser , $msie ) ) {
+    if( preg_match( "/MSIE[^;]*/i" , $browser , $msie ) ) {
 
-		// get version 
+        // get version
 
-		if( preg_match( "/[0-9]+\.[0-9]+/i" , $msie[0] , $version ) ) {
+        if( preg_match( "/[0-9]+\.[0-9]+/i" , $msie[0] , $version ) ) {
 
-			// check version
+            // check version
 
-			if( (float)$version[0] >= 5.5 ) {
+            if( (float)$version[0] >= 5.5 ) {
 
-				// finally check if it's not opera impersonating ie
+                // finally check if it's not opera impersonating ie
 
-				if( ! preg_match( "/opera/i" , $browser ) ) {
+                if( ! preg_match( "/opera/i" , $browser ) ) {
 
-					return true ;
+                    return true ;
 
-				}
+                }
 
-			}
+            }
 
-		}
+        }
 
-	}
+    }
 
-	return false ;
+    return false ;
 
 }
-

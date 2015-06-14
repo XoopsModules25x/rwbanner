@@ -41,6 +41,7 @@ class RwbannerCorePreload extends XoopsPreloadItem
     {
         $module_handler =& xoops_getHandler('module');
         $module = $module_handler->getByDirname('rw_banner');
+
         return ($module && $module->getVar('isactive')) ? true : false;
     }
 }

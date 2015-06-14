@@ -36,7 +36,6 @@ $module_handler = xoops_gethandler('module');
 $module = $module_handler->getByDirname($dirname);
 $pathIcon32 = $module->getInfo('icons32');
 
-
 xoops_loadLanguage('admin', $dirname);
 
 $adminmenu = array();
@@ -45,7 +44,6 @@ $i = 1;
 $adminmenu[$i]["title"] = _MI_RWBANNER_MENU_TITLE0;
 $adminmenu[$i]["link"] = 'admin/index.php';
 $adminmenu[$i]["icon"] = $pathIcon32.'/home.png';
-
 
 $i++;
 $adminmenu[$i]["title"] = _MI_RWBANNER_MENU_TITLE1;
@@ -91,4 +89,3 @@ $i++;
 $adminmenu[$i]["title"] = _MI_RWBANNER_MENU_TITLE6;
 $adminmenu[$i]["link"] = 'admin/about.php';
 $adminmenu[$i]["icon"] = $pathIcon32.'/about.png';
-
