@@ -1,5 +1,5 @@
 ![alt XOOPS CMS](http://xoops.org/images/logoXoops4GithubRepository.png)
-## rwBanner module for [XOOPS CMS 2.5.8+](https://xoops.org)
+## rwBanner for [XOOPS CMS 2.5.8+](https://xoops.org)
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat)](LICENSE)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/mambax7/rwbanner.svg?style=flat)](https://scrutinizer-ci.com/g/mambax7/rwbanner/?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/2d27c0023ee54f0b9ba2b5d17a68b2a5)](https://www.codacy.com/app/mambax7/rwbanner)
