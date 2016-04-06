@@ -59,7 +59,7 @@ FEATURES:
 - Registering of banners separated by categories and clients. The categories are used to differnciate the size of the banners so that you can create several banner exhibition models. The clients are users registered at your site and when you add a banner you have to associate a banner with one of the registered users.
 - 5 block models to show cloneable banners and with several configurations, allowing the administrator choose how many random banners he wants to show, which category should be shown and further, the option to create a table for the banner exhibition having only to select in how many columns they should be shown.
 - Statistics block for the client. In this block is shown a table with the main statistics of all the banners related to the client.
-- Activation and deactivation option of banners by one click. Only active banners will be shown but the inactive ones continue registered in the database, allowing you to reactivate them at any time. 
+- Activation and deactivation option of banners by one click. Only active banners will be shown but the inactive ones continue registered in the database, allowing you to reactivate them at any time.
 - Beyond the banners exhibition blocks it is also possible to use the random banner in the theme of your site or in any other page you wish, having only to add the <{$rw_banner}> tag (this feature requires a small hack in the xops core that will be explained in the installation instructions below).
 - Statistics page for the client. In the main page of the module is a table with all the statistics of the banners for the logged client. Further, in this page the client has the option to send the banner statistics for his registered e-mail. Página de Estatísticas do Cliente. Na página principal do módulo é exibida uma tabela com todas as estatísticas dos banners and if the administrator allows he will be able to change some information of the banner.- Showing or not random banners in the text of other modules. Now you can show your banners in any module that accepts bbcodes. You can publish banners in news, articles, static pages, including in any forum posts. (this feature requires a small hack in the xops core that will be explained in the installation instructions below).
 
@@ -75,7 +75,7 @@ To include this back, open the file XOOPS_ROOT_PATH/header.php and in the end of
 ###########################################################################################
 $mod = XoopsModule::getByDirname("rwbanner");
 if ($mod){
-  include_once (dirname(dirname(__FILE__)) .'/include/maketags.php');
+  include_once (dirname(__DIR__) .'/include/maketags.php');
 }
 ###########################################################################################
 #### End of the Hack by rw-banner
@@ -92,7 +92,7 @@ To add the hack, open the XOOPS_ROOT_PATH/class/module.textsanitizer.php file an
 #######################################################################################
 $mod = XoopsModule::getByDirname("rw_banner");
 if ($mod){
-  include(dirname(dirname(__FILE__)) .'/include/bbcode.php');
+  include(dirname(__DIR__) .'/include/bbcode.php');
 }
 #######################################################################################
 #### end of the Hack by rw-banner
@@ -117,14 +117,14 @@ The parameter align accpets the values "left" for left alignment, "right"for rig
 
 
 UPDATES:
-The modules had structural changes in relation to the database in relation to the previous verions. If you use any versions prior to 1.3RC we recommend you to unistall the module before installing the new version. 
+The modules had structural changes in relation to the database in relation to the previous verions. If you use any versions prior to 1.3RC we recommend you to unistall the module before installing the new version.
 In case you have a version newer than the 1.3RC, delete the rw_banner folder and replace it by the folder from the new version. Login as administrator to your site. If you use the hack in header.php file, comment it first. Access via browser the URL "XOOPS_URL/modules/rwbanner/admin/upgrade.php" and the script will update the tables automatically without loosing all the setup you have already defined and all the registered banners. Follow the steps described in the script and your module will be updated.
 
 KNOWN BUGS:
--Banners in HTML code don't have their click counted. This bug is originally from the original xoops banner module. This function is used in our module but with some changes. 
+-Banners in HTML code don't have their click counted. This bug is originally from the original xoops banner module. This function is used in our module but with some changes.
 
 THANKS:
-I thank all my friends from the XoopsTotal community that helped me with ideas and suggestions for the development of this module, in special to my great friend Wilson and Giba (board of XT) for their great help with their ideias and help in testing the module. 
+I thank all my friends from the XoopsTotal community that helped me with ideas and suggestions for the development of this module, in special to my great friend Wilson and Giba (board of XT) for their great help with their ideias and help in testing the module.
 
 For further information or problem solving for this module access the following site: http://rwbanner.brinfo.com.br
 

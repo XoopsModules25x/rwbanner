@@ -29,34 +29,34 @@
 // Descrição: Sistema de gerenciamento de mídias publicitárias               //
 // ------------------------------------------------------------------------- //
 
-$path = dirname(dirname(dirname(dirname(__FILE__))));
+$path = dirname(dirname(dirname(__DIR__)));
 include_once $path . '/mainfile.php';
 include_once $path . '/include/cp_header.php';
-include_once $path ."/kernel/module.php";
-include_once $path ."/class/xoopstree.php";
-include_once $path ."/class/xoopslists.php";
-include_once $path ."/class/xoopsformloader.php";
-include_once $path .'/class/pagenav.php';
+include_once $path . '/kernel/module.php';
+include_once $path . '/class/xoopstree.php';
+include_once $path . '/class/xoopslists.php';
+include_once $path . '/class/xoopsformloader.php';
+include_once $path . '/class/pagenav.php';
 
-if (is_object($xoopsUser)){
-    $dirname         = basename(dirname(dirname(__FILE__)));
-    $module_handler  = xoops_gethandler('module');
-    $module          = $module_handler->getByDirname($dirname);
-  if (!$xoopsUser->isAdmin($module->mid())){
-    redirect_header(XOOPS_URL."/",1,_MD_RWBANNER_NOPERM);
-    exit();
-  }
-}else{
-  redirect_header(XOOPS_URL."/",1,_MD_RWBANNER_NOPERM);
-  exit();
-}
+if (is_object($xoopsUser)) {
+    $dirname        = basename(dirname(__DIR__));
+    $module_handler = xoops_getHandler('module');
+    $module         = $module_handler->getByDirname($dirname);
+    if (!$xoopsUser->isAdmin($module->mid())) {
+        redirect_header(XOOPS_URL . '/', 1, _MD_RWBANNER_NOPERM);
 
-include_once XOOPS_ROOT_PATH."/modules/".$module->dirname()."/include/functions.php";
-
-if ( file_exists("../language/".$xoopsConfig['language']."/modinfo.php") ) {
-    include("../language/".$xoopsConfig['language']."/modinfo.php");
+    }
 } else {
-    include("../language/english/modinfo.php");
+    redirect_header(XOOPS_URL . '/', 1, _MD_RWBANNER_NOPERM);
+
 }
 
-$myts =& MyTextSanitizer::getInstance();
+include_once XOOPS_ROOT_PATH . '/modules/' . $module->dirname() . '/include/functions.php';
+
+if (file_exists('../language/' . $xoopsConfig['language'] . '/modinfo.php')) {
+    include '../language/' . $xoopsConfig['language'] . '/modinfo.php';
+} else {
+    include '../language/english/modinfo.php';
+}
+
+$myts = MyTextSanitizer::getInstance();

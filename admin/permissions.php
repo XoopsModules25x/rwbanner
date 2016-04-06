@@ -16,10 +16,9 @@
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
  * @author          The SmartFactory <www.smartfactory.ca>
- * @version         $Id: permissions.php 337 2011-12-06 20:08:50Z lusopoemas@gmail.com $
  */
 
-include_once dirname(__FILE__) . '/admin_header.php';
+include_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
 
 include_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
@@ -29,18 +28,18 @@ global $xoopsDB, $xoopsModule;
 $module_id = $xoopsModule->getVar('mid');
 
 $title_of_form = 'Permission form for viewing categories';
-$perm_desc = 'Select categories that each group is allowed to view';
+$perm_desc     = 'Select categories that each group is allowed to view';
 
 //publisher_cpHeader();
 //publisher_adminMenu(3, _AM_PUBLISHER_PERMISSIONS);
 
 // View Categories permissions
 $item_list_view = array();
-$block_view = array();
+$block_view     = array();
 
-$result_view = $xoopsDB->query("SELECT cod, titulo FROM " . $xoopsDB->prefix("rw_categorias") . " ");
+$result_view = $xoopsDB->query('SELECT cod, titulo FROM ' . $xoopsDB->prefix('rw_categorias') . ' ');
 if ($xoopsDB->getRowsNum($result_view)) {
-    $form_submit = new XoopsGroupPermForm($title_of_form, $module_id, "category_read", "", 'admin/permissions.php');
+    $form_submit = new XoopsGroupPermForm($title_of_form, $module_id, 'category_read', '', 'admin/permissions.php');
     while ($myrow_view = $xoopsDB->fetcharray($result_view)) {
         $form_submit->addItem($myrow_view['cod'], $myts->displayTarea($myrow_view['titulo']));
     }
@@ -54,9 +53,9 @@ $title_of_form2 = 'Submit Permissions';
 // Submit Categories permissions
 echo "<br />\n";
 
-$result_view = $xoopsDB->query("SELECT cod, titulo FROM " . $xoopsDB->prefix("rw_categorias") . " ");
+$result_view = $xoopsDB->query('SELECT cod, titulo FROM ' . $xoopsDB->prefix('rw_categorias') . ' ');
 if ($xoopsDB->getRowsNum($result_view)) {
-    $form_submit = new XoopsGroupPermForm($title_of_form2, $module_id, "category_submit", "", 'admin/permissions.php');
+    $form_submit = new XoopsGroupPermForm($title_of_form2, $module_id, 'category_submit', '', 'admin/permissions.php');
     while ($myrow_view = $xoopsDB->fetcharray($result_view)) {
         $form_submit->addItem($myrow_view['cod'], $myts->displayTarea($myrow_view['titulo']));
     }
@@ -65,4 +64,4 @@ if ($xoopsDB->getRowsNum($result_view)) {
     echo _AM_PUBLISHER_MD_RWBANNER_NOPERMSSET;
 }
 
-include_once 'admin_footer.php';
+include_once __DIR__ . '/admin_footer.php';

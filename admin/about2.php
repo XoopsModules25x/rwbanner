@@ -29,8 +29,8 @@
 // Descrição: Sistema de gerenciamento de mídias publicitárias               //
 // ------------------------------------------------------------------------- //
 
-include_once("admin_header.php");
+include_once __DIR__ . '/admin_header.php';
 
-include_once("../class/about.php");
+include_once dirname(__DIR__) . '/class/about.php';
 $aboutObj = new RwbannerAbout(_AM_RWBANNER_ABOUT);
 $aboutObj->render();
