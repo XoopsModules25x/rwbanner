@@ -31,10 +31,10 @@
 DESCRIÇÃO:
 ==========
 
-Módulo xoops de gerenciamento e exibição de  banners randômicos, que  pode ser usado ou 
-não em conjunto com o sistema de banners padrão do xoops. 
+Módulo xoops de gerenciamento e exibição de  banners randômicos, que  pode ser usado ou
+não em conjunto com o sistema de banners padrão do xoops.
 
-O objetivo  deste módulo  é  propiciar  ao  administrador do site um método organizado, 
+O objetivo  deste módulo  é  propiciar  ao  administrador do site um método organizado,
 robusto e eficiente para gerenciar mídias e espaços publicitários em seu site.
 
 
@@ -58,56 +58,56 @@ Caracteristicas.
 - Várias modalidades de utilização randômicas.
 - Você poderá criar conjuntos de banners intercalados por grupos.
 - Aceita e exposição de mais de um banner nos blocos.
-- 
+-
 
 FUNCIONALIDADES:
 ================
 
 
-- Cadastramento de banners separados  por categorias e clientes, estas  categorias  são 
-  usadas para diferenciar os tamanhos dos banners, fazendo assim com que se possa criar 
-  diversos modelos de exibição dos banners. Os clientes são os  usuários cadastrados no 
+- Cadastramento de banners separados  por categorias e clientes, estas  categorias  são
+  usadas para diferenciar os tamanhos dos banners, fazendo assim com que se possa criar
+  diversos modelos de exibição dos banners. Os clientes são os  usuários cadastrados no
   site, na hora de cadastrar um banner é obrigatório vinculá-lo a um usuário.
 
-- 5 modelos de blocos  para exibição de banners clonáveis e com diversas configurações, 
-  deixando a critério do administrador  do módulo escolher  quantos  banners randômicos 
-  deseja  que seja  exibido, qual a categoria  de banners exibir  e ainda a opção de se 
-  criar uma tabela  para a exibição dos banners, bastando selecionar em quantas colunas 
+- 5 modelos de blocos  para exibição de banners clonáveis e com diversas configurações,
+  deixando a critério do administrador  do módulo escolher  quantos  banners randômicos
+  deseja  que seja  exibido, qual a categoria  de banners exibir  e ainda a opção de se
+  criar uma tabela  para a exibição dos banners, bastando selecionar em quantas colunas
   os mesmos serão exibidos.
 
-- Bloco de Estatísticas do Cliente. Neste bloco é mostrado uma tabela com as principais 
+- Bloco de Estatísticas do Cliente. Neste bloco é mostrado uma tabela com as principais
   estatísticas de todos os banners do cliente.
 
-- Opção de ativação e dasativação do banner com apenas um clique. 
-  Somente banners ativos serão exibidos, porém os banners inativos continuam na base, 
+- Opção de ativação e dasativação do banner com apenas um clique.
+  Somente banners ativos serão exibidos, porém os banners inativos continuam na base,
   possibilitando que os mesmos sejam ativados novamente a qualquer momento.
 
-- Além dos blocos de exibição de banners, também  é posível utilizar o banner randômico 
-  no tema do site ou em qualquer página que se deseje, bastando  para isso acescentar a 
+- Além dos blocos de exibição de banners, também  é posível utilizar o banner randômico
+  no tema do site ou em qualquer página que se deseje, bastando  para isso acescentar a
   variável smarty <{$rw_banner}> ou qualquer outra que voce desejar criar.
-  Não existe  limite  para a sua  criatividade e (esta funcionalidade requer um pequeno 
+  Não existe  limite  para a sua  criatividade e (esta funcionalidade requer um pequeno
   hack no core do xoops que será explicado abaixo no proceso de instalação).
 
-- Página de Estatísticas do Cliente. Na página principal do módulo é exibida uma tabela 
-  com todas as estatísticas dos banners do cliente logado no site. 
+- Página de Estatísticas do Cliente. Na página principal do módulo é exibida uma tabela
+  com todas as estatísticas dos banners do cliente logado no site.
 
-  Ainda nesta  página  o cliente tem a opção de enviar as estatísticas do banner para o 
-  email cadastrado no site, e caso o o administrador permita, você mesmo poderá alterar 
+  Ainda nesta  página  o cliente tem a opção de enviar as estatísticas do banner para o
+  email cadastrado no site, e caso o o administrador permita, você mesmo poderá alterar
   algumas informações do seu banner.
 
-- Exibição de banners randomicos ou não nos textos de outros módulos. 
-  Agora você poderá exibir seus  banners em  qualquer módulo  que aceite  bbcodes. Você 
-  poderá   publicar  banners   em  notícias, artigos, páginas  de   conteúdo  estático, 
-  inclusive  em posts  de fórum. (esta funcionalidade requer um pequeno hack no core do 
+- Exibição de banners randomicos ou não nos textos de outros módulos.
+  Agora você poderá exibir seus  banners em  qualquer módulo  que aceite  bbcodes. Você
+  poderá   publicar  banners   em  notícias, artigos, páginas  de   conteúdo  estático,
+  inclusive  em posts  de fórum. (esta funcionalidade requer um pequeno hack no core do
   xoops que será explicado abaixo no proceso de instalação).
 
 INSTALAÇÃO:
 ===========
 
 
-A instalação do módulo é bem simples pois é igual a qualquer módulo  padrão xoops. Para 
-ativar a função de exibição de banners randômicos no tema do site você precisa fazer um 
-pequeno hack no core do xoops, mais especificamente no arquivo header.php,   localizado 
+A instalação do módulo é bem simples pois é igual a qualquer módulo  padrão xoops. Para
+ativar a função de exibição de banners randômicos no tema do site você precisa fazer um
+pequeno hack no core do xoops, mais especificamente no arquivo header.php,   localizado
 na raiz de seu site.
 
 Para  incluir  o   hack, abra  o  arquivo  XOOPS_ROOT_PATH/header.php  e no  final dele
@@ -120,23 +120,23 @@ acrescente, antes de } ?>, o código abaixo:
 #######################################################################################
 $mod = XoopsModule::getByDirname("rw_banner");
 if ($mod){
-  include_once (dirname(dirname(__FILE__)) .'/include/maketags.php');
+  include_once (dirname(__DIR__) .'/include/maketags.php');
 }
 #######################################################################################
 #### Fim do Hack by rw-banner
 #######################################################################################
 
-Pronto, você ativou a função de TAGS SMARTY do módulo. Na administração  do módulo você 
-você poderá criar, editar, alterar o status e apagar as TAGS. 
-Toda vez que desejar exibir seu banner randômico, seja no tema do site ou nos templates 
-dos módulos, basta criar uma tag para o modelo de  publicidade desejado e colocá-la  em 
+Pronto, você ativou a função de TAGS SMARTY do módulo. Na administração  do módulo você
+você poderá criar, editar, alterar o status e apagar as TAGS.
+Toda vez que desejar exibir seu banner randômico, seja no tema do site ou nos templates
+dos módulos, basta criar uma tag para o modelo de  publicidade desejado e colocá-la  em
 seu tema ou template.
 
-Para ativar a nova função de exibição de banners dentro de textos (em conteúdos do site) 
+Para ativar a nova função de exibição de banners dentro de textos (em conteúdos do site)
 ou seja, dentro de outros  módulos ou blocos do site, você precisa incluir  um  pequeno
 hack no core do xoops, no arquivo XOOPS_ROOT_PATH/class/module.textsanitizer.php
 
-Para incluir  o hack,  abra  o  arquivo  XOOPS_ROOT_PATH/class/module.textsanitizer.php 
+Para incluir  o hack,  abra  o  arquivo  XOOPS_ROOT_PATH/class/module.textsanitizer.php
 e procure pela função xoopsCodeDecode, no final dela você deverá colocar o código abaixo:
 
 #######################################################################################
@@ -145,40 +145,40 @@ e procure pela função xoopsCodeDecode, no final dela você deverá colocar o c
 #######################################################################################
 $mod = XoopsModule::getByDirname("rw_banner");
 if ($mod){
-  include(dirname(dirname(__FILE__)) .'/include/bbcode.php');
+  include(dirname(__DIR__) .'/include/bbcode.php');
 }
 #######################################################################################
 #### Fim do Hack by rw-banner
 #######################################################################################
 
-Para facilitar o entendimento, dentro da pasta docs do módulo você encontrará  a função 
+Para facilitar o entendimento, dentro da pasta docs do módulo você encontrará  a função
 xoopsCodeDecode já hackeada, basta seguir o exemplo e aplicar o hack no seu arquivo.
 
-Depois de fazer o hack, para exibir os banners nos seus textos basta  criar  as tags na 
-administração do módulo do mesmo jeito que que se cria as tags para exibição no tema do 
+Depois de fazer o hack, para exibir os banners nos seus textos basta  criar  as tags na
+administração do módulo do mesmo jeito que que se cria as tags para exibição no tema do
 site ou nos templates dos módulos.
 
-Quando já tiver  suas tags criadas,  basta ir ao módulo que desejar exibir os banners e 
+Quando já tiver  suas tags criadas,  basta ir ao módulo que desejar exibir os banners e
 no campo de texto  (Tem que aceitar bbcodes!! neste módulo para funcionar corretamente)
-inserir a tag da mesma forma que no tema do site por exemplo. 
+inserir a tag da mesma forma que no tema do site por exemplo.
 
-A única diferença é na sintaxe de declaração da tag. 
+A única diferença é na sintaxe de declaração da tag.
 
 Veja abaixo os exemploa:
 
 
-Vamos supor que você tenha a TAG publicidade criada e configurada na administração. 
+Vamos supor que você tenha a TAG publicidade criada e configurada na administração.
 
 Para exibir os banners dessa TAG dentro do seu tema no site você colocaria:
 
 <{$publicidade}>
 
-Já no corpo das notícias ou em qualquer  texto de  qualquer módulo  que  aceite  bbcode 
+Já no corpo das notícias ou em qualquer  texto de  qualquer módulo  que  aceite  bbcode
 você deve colocar a TAG assim:
 
 [RW align=center]publicidade[/RW]
 
-O  parametro  align   aceita   os  valores  "left","right" e "center", respectivamente, 
+O  parametro  align   aceita   os  valores  "left","right" e "center", respectivamente,
 à esquerda, à direita e ao centro do local indicado em relação ao conteúdo mostrado.
 
 
@@ -187,32 +187,32 @@ ATUALIZAÇÃO:
 
 
 O módulo sofreu uma  modificação  total  em sua estrutura, seja em banco de dados ou em
-scipts, praticamente foi todo  refeito.  Se você usa  versões  anteriores à 1.3 RC, nós 
+scipts, praticamente foi todo  refeito.  Se você usa  versões  anteriores à 1.3 RC, nós
 recomendamos firmemente que você desinstale o módulo antes de instalar a nova versão.
 
-Caso você use uma  versão igual  ou superior à 1.3 RC, apague  a  pasta do rw_banner  e 
-coloque no lugar a pasta da nova versão. 
+Caso você use uma  versão igual  ou superior à 1.3 RC, apague  a  pasta do rw_banner  e
+coloque no lugar a pasta da nova versão.
 
 Faça login no site como administrador.
 
-Se você utiliza o hack no header.php, comente-o primeiro, acesse via browser o endereço 
-"dirname(dirname(__FILE__)) .'/admin/upgrade.php" que o script  fará  a  atualização  das
-tabelas automaticamente sem que você perca as configurações e banners já cadastrados. 
+Se você utiliza o hack no header.php, comente-o primeiro, acesse via browser o endereço
+"dirname(__DIR__) .'/admin/upgrade.php" que o script  fará  a  atualização  das
+tabelas automaticamente sem que você perca as configurações e banners já cadastrados.
 
 Siga os passos do script e seu módulo estará atualizado.
 
 BUGS AINDA NÃO SOLUCIONADOS:
 ============================
 
--Banners em código HTML não tem os cliques contabilizados, essa falha já vem do próprio 
-sistema  de banners  padrão do  xoops, função  esta que é utilizada no módulo porém com 
+-Banners em código HTML não tem os cliques contabilizados, essa falha já vem do próprio
+sistema  de banners  padrão do  xoops, função  esta que é utilizada no módulo porém com
 algumas modificações.
 
 AGRADECIMENTOS:
 ===============
 
-Agradeço a  todos os  amigos da  comunidade  XoopsTotal que  me ajudaram  com  idéias e 
-sugestões para o desenvolvimento deste módulo em especial aos meus amigos Wilson e Giba 
+Agradeço a  todos os  amigos da  comunidade  XoopsTotal que  me ajudaram  com  idéias e
+sugestões para o desenvolvimento deste módulo em especial aos meus amigos Wilson e Giba
 (conselho do XT) pela grande ajuda, suas  brilhantes  idéias e também pela participação
 em todas as etapas de testes do módulo.
 
@@ -220,17 +220,17 @@ Para maiores informações ou resolução de problemas do módulo acesse:
 
 http://rwbanner.brinfo.com.br
 
-Estaremos  dentro do possivel  sempre criando  exemplos de  como utilizar o rw_banner e 
+Estaremos  dentro do possivel  sempre criando  exemplos de  como utilizar o rw_banner e
 assim você poderá obter o maior proveito possivel a utilizar este módulo.
 
-Se  você  estiver  utilizando  este  módulo, não  deixe de   visitar  o nosso  site  de 
-desenvolvimento para sugerir novidades. 
+Se  você  estiver  utilizando  este  módulo, não  deixe de   visitar  o nosso  site  de
+desenvolvimento para sugerir novidades.
 
-Aproveite  também para  preencher o nosso livro  de usuários satisfeitos e mandar o seu 
+Aproveite  também para  preencher o nosso livro  de usuários satisfeitos e mandar o seu
 recado para que outros usuários que desejarem utilizar este módulo possam saber que ele
 funciona e também é muito útil.
 
 Rw_banner Team.
 
-TheRpLima 
+TheRpLima
 

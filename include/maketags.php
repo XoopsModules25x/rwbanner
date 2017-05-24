@@ -29,33 +29,34 @@
 // Descrição: Sistema de gerenciamento de mídias publicitárias               //
 // ------------------------------------------------------------------------- //
 
-include_once (dirname(dirname(__FILE__)) .'/class/class.banner.php');
-include_once (dirname(dirname(__FILE__)) .'/class/class.tags.php');
+include_once(dirname(__DIR__) . '/class/class.banner.php');
+include_once(dirname(__DIR__) . '/class/class.tags.php');
 global $xoopsTpl;
 
-$url_arr = explode( '/', strstr( $_SERVER['PHP_SELF'],'/modules/') );
-$mod = (isset($url_arr[2]))?XoopsModule::getByDirname($url_arr[2]):false;
-if ($mod)
-  $mid = $mod->mid();
-else
-  $mid = 0;
+$url_arr = explode('/', strstr($_SERVER['PHP_SELF'], '/modules/'));
+$mod     = isset($url_arr[2]) ? XoopsModule::getByDirname($url_arr[2]) : false;
+if ($mod) {
+    $mid = $mod->mid();
+} else {
+    $mid = 0;
+}
 
-$tag = new RWTag();
+$tag        = new RWTag();
 $lista_tags = $tag->getTags('ORDER BY id ASC');
 
-for ($i = 0; $i <= count($lista_tags)-1; $i++){
-  $mods = unserialize($lista_tags[$i]->modid);
-  if($lista_tags[$i]->getStatus() == 1){
-    if (in_array(0,$mods)){
-      $rwbanner = new RWbanners();
-      $xoopsTpl->assign($lista_tags[$i]->getName(), $rwbanner->showBanner($lista_tags[$i]->getCateg(),$lista_tags[$i]->getQtde(),$lista_tags[$i]->getCols()));
-    }elseif(!in_array(0,$mods) && in_array($mid,$mods)){
-      $rwbanner = new RWbanners();
-      $xoopsTpl->assign($lista_tags[$i]->getName(), $rwbanner->showBanner($lista_tags[$i]->getCateg(),$lista_tags[$i]->getQtde(),$lista_tags[$i]->getCols()));
-    }else{
-      $xoopsTpl->assign($lista_tags[$i]->getName(), '');
+for ($i = 0; $i <= count($lista_tags) - 1; ++$i) {
+    $mods = unserialize($lista_tags[$i]->modid);
+    if ($lista_tags[$i]->getStatus() == 1) {
+        if (in_array(0, $mods)) {
+            $rwbanner = new RWbanners();
+            $xoopsTpl->assign($lista_tags[$i]->getName(), $rwbanner->showBanner($lista_tags[$i]->getCateg(), $lista_tags[$i]->getQtde(), $lista_tags[$i]->getCols()));
+        } elseif (!in_array(0, $mods) && in_array($mid, $mods)) {
+            $rwbanner = new RWbanners();
+            $xoopsTpl->assign($lista_tags[$i]->getName(), $rwbanner->showBanner($lista_tags[$i]->getCateg(), $lista_tags[$i]->getQtde(), $lista_tags[$i]->getCols()));
+        } else {
+            $xoopsTpl->assign($lista_tags[$i]->getName(), '');
+        }
+    } else {
+        $xoopsTpl->assign($lista_tags[$i]->getName(), '');
     }
-  }else{
-    $xoopsTpl->assign($lista_tags[$i]->getName(), '');
-  }
 }
